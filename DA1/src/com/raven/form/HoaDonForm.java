@@ -4,6 +4,8 @@
  */
 package com.raven.form;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author ADMIN
@@ -15,6 +17,13 @@ public class HoaDonForm extends javax.swing.JPanel {
      */
     public HoaDonForm() {
         initComponents();
+    }
+
+    public static JPanel createPanel() {
+        HoaDonForm panel = new HoaDonForm();
+        // Cấu hình JPanel
+
+        return panel;
     }
 
     /**

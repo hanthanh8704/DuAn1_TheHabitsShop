@@ -18,6 +18,7 @@ public class SanPhamm extends javax.swing.JFrame {
     public SanPhamm() {
         initComponents();
         setLocationRelativeTo(null);
+        System.out.println("helooo");
     }
 
     /**

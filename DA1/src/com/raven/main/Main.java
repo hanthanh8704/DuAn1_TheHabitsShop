@@ -6,7 +6,14 @@ import com.raven.event.EventMenuSelected;
 import com.raven.event.EventShowPopupMenu;
 import com.raven.form.Form1;
 import com.raven.form.Form_Home;
+import com.raven.form.HoaDonForm;
+import com.raven.form.KhuyenMai;
+import com.raven.form.LichSuHoaDonForm;
 import com.raven.form.MainForm;
+import com.raven.form.QuanLyKhachHang;
+import com.raven.form.QuanLyNhanVien;
+import com.raven.form.SanPhamm;
+import com.raven.form.Voucher;
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
 import com.raven.swing.icon.GoogleMaterialDesignIcons;
@@ -45,11 +52,30 @@ public class Main extends javax.swing.JFrame {
             public void menuSelected(int menuIndex, int subMenuIndex) {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                 if (menuIndex == 0) {
+                    //main.showForm(new SanPhamm());
                     if (subMenuIndex == 0) {
                         main.showForm(new Form_Home());
                     } else if (subMenuIndex == 1) {
                         main.showForm(new Form1());
                     }
+                } else if (menuIndex == 1) {
+                    main.showForm(new QuanLyNhanVien());
+                } else if (menuIndex == 2) {
+                    main.showForm(new HoaDonForm());
+                } else if (menuIndex == 3) {
+                    main.showForm(new QuanLyKhachHang());
+                } else if (menuIndex == 4) {
+                    main.showForm(new LichSuHoaDonForm());
+                } else if (menuIndex == 5) {
+                    main.showForm(new KhuyenMai());
+                } else if (menuIndex == 6) {
+                    main.showForm(new Voucher());
+                } else if (menuIndex == 7) {
+                    main.showForm(new QuanLyNhanVien());
+                } else if (menuIndex == 8) {
+                    main.showForm(new QuanLyNhanVien());
+                } else{
+                    main.showForm(new QuanLyNhanVien());
                 }
             }
         });

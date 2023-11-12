@@ -30,7 +30,7 @@ public class Header extends javax.swing.JPanel {
 
         lbUserName.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         lbUserName.setForeground(new java.awt.Color(127, 127, 127));
-        lbUserName.setText("User Name");
+        lbUserName.setText("HangNT169");
 
         lbRole.setForeground(new java.awt.Color(127, 127, 127));
         lbRole.setText("Admin");
@@ -44,7 +44,7 @@ public class Header extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cmdMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 453, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 449, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

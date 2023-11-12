@@ -148,7 +148,7 @@ public class Form_Home extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -161,13 +161,13 @@ public class Form_Home extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(card1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(card1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(card2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(card2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(card3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(card3, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(card4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(card4, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

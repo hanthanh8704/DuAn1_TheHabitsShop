@@ -12,6 +12,7 @@ import java.awt.Component;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import javax.swing.ImageIcon;
 import net.miginfocom.swing.MigLayout;
@@ -54,15 +55,22 @@ public class Menu extends javax.swing.JPanel {
     }
 
     public void initMenuItem() {
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/2.png")), "Thống Kê"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/12.png")), "Sản Phẩm", "Giày Nam", "Giày Nữ"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/4.png")), "Nhân Viên"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/7.png")), "Hóa Đơn"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/5.png")), "Khách Hàng"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/3.png")), "Lịch Sử"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/9.png")), "Khuyến Mãi"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/1.png")), "Đổi Mật Khẩu"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/8.png")), "Đăng Xuất"));
+        addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/sanpham.png")),20, 20), "Sản Phẩm"));
+        addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/nhanvien.png")),20, 20), "Nhân Viên"));
+        addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/hoadon.png")),20, 20), "Hóa Đơn"));
+        addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/banhang.png")),20, 20), "Bán Hàng"));
+        addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/khachhang.png")),20, 20), "Khách Hàng"));
+        addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/lichsu.png")),20, 20), "Lịch Sử"));
+        addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/khuyenmai.png")),20, 20), "Khuyến Mãi"));
+        addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/voucher.png")),20, 20), "Voucher"));
+        addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/doimk.png")),20, 20), "Đổi Mật Khẩu"));
+        addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/logout.png")),20, 20), "Đăng Xuất"));
+    }
+
+    private ImageIcon resizeIcon(ImageIcon icon, int width, int height) {
+        Image image = icon.getImage();
+        Image resizedImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(resizedImage);
     }
 
     private void addMenu(ModelMenu menu) {
@@ -112,6 +120,7 @@ public class Menu extends javax.swing.JPanel {
         sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
+        panel.setForeground(new java.awt.Color(153, 153, 153));
         panel.setOpaque(false);
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
@@ -147,7 +156,7 @@ public class Menu extends javax.swing.JPanel {
     protected void paintComponent(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        GradientPaint gra = new GradientPaint(0, 0, new Color(51,148,236), getWidth(), 0, new Color(113,212,239));
+        GradientPaint gra = new GradientPaint(0, 0, new Color(51, 148, 236), getWidth(), 0, new Color(113, 212, 239));
         g2.setPaint(gra);
         g2.fillRect(0, 0, getWidth(), getHeight());
         super.paintComponent(grphcs);

@@ -4,14 +4,11 @@ import com.raven.component.Header;
 import com.raven.component.Menu;
 import com.raven.event.EventMenuSelected;
 import com.raven.event.EventShowPopupMenu;
-import com.raven.form.Form1;
-import com.raven.form.Form_Home;
 import com.raven.form.BanHangForm;
 import com.raven.form.DoiMK;
 import com.raven.form.HoaDonForm;
 import com.raven.form.KhuyenMai;
 import com.raven.form.LichSuHoaDonForm;
-import com.raven.form.Login;
 import com.raven.form.MainForm;
 import com.raven.form.QuanLyKhachHang;
 import com.raven.form.QuanLyNhanVien;
@@ -24,8 +21,6 @@ import com.raven.swing.icon.IconFontSwing;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
@@ -44,6 +39,8 @@ public class Main extends javax.swing.JFrame {
         init();
     }
 
+    Login login = null;
+
     private void init() {
         layout = new MigLayout("fill", "0[]0[100%, fill]0", "0[fill, top]0");
         bg.setLayout(layout);
@@ -61,7 +58,7 @@ public class Main extends javax.swing.JFrame {
                 } else if (menuIndex == 2) {
                     main.showForm(new HoaDonForm());
                 } else if (menuIndex == 3) {
-                    main.showForm(new BanHangForm());   
+                    main.showForm(new BanHangForm());
                 } else if (menuIndex == 4) {
                     main.showForm(new QuanLyKhachHang());
                 } else if (menuIndex == 5) {
@@ -72,8 +69,8 @@ public class Main extends javax.swing.JFrame {
                     main.showForm(new Voucher());
                 } else if (menuIndex == 8) {
                     main.showForm(new DoiMK());
-                } else{
-                    main.showForm(new Login());
+                } else {
+//                    main.showForm(new Login());
                 }
             }
         });
@@ -132,6 +129,12 @@ public class Main extends javax.swing.JFrame {
         IconFontSwing.register(GoogleMaterialDesignIcons.getIconFont());
         //  Start with this form
         main.showForm(new SanPham());
+    }
+
+    void openLogin() {
+        login = new Login();
+        login.setVisible(true);
+        this.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")

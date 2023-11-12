@@ -64,10 +64,12 @@ public class Main extends javax.swing.JFrame {
                 } else if (menuIndex == 5) {
                     main.showForm(new LichSuHoaDonForm());
                 } else if (menuIndex == 6) {
-                    main.showForm(new KhuyenMai());
+                    if (subMenuIndex == 0) {
+                        main.showForm(new KhuyenMai());
+                    } else if (subMenuIndex == 1) {
+                        main.showForm(new Voucher());
+                    }
                 } else if (menuIndex == 7) {
-                    main.showForm(new Voucher());
-                } else if (menuIndex == 8) {
                     main.showForm(new DoiMK());
                 } else {
 //                    main.showForm(new Login());

@@ -59,9 +59,9 @@ public class LogIn extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3);
 
-        jPanel4.setPreferredSize(new java.awt.Dimension(400, 150));
+        jPanel4.setPreferredSize(new java.awt.Dimension(400, 170));
 
-        jPanel6.setPreferredSize(new java.awt.Dimension(285, 150));
+        jPanel6.setPreferredSize(new java.awt.Dimension(285, 155));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("User Name");
@@ -106,11 +106,11 @@ public class LogIn extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jCheckBox1))
+                    .addComponent(jCheckBox1)
+                    .addComponent(jLabel7))
                 .addContainerGap())
         );
 
@@ -118,17 +118,16 @@ public class LogIn extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4);
 
-        jPanel9.setPreferredSize(new java.awt.Dimension(400, 70));
-        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
+        jPanel9.setPreferredSize(new java.awt.Dimension(400, 50));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("Login");
-        jButton1.setPreferredSize(new java.awt.Dimension(200, 30));
+        jButton1.setPreferredSize(new java.awt.Dimension(270, 35));
         jPanel9.add(jButton1);
 
         jPanel1.add(jPanel9);
 
-        jPanel10.setPreferredSize(new java.awt.Dimension(400, 100));
+        jPanel10.setPreferredSize(new java.awt.Dimension(400, 50));
 
         jLabel8.setText("Don't have an account?");
         jPanel10.add(jLabel8);

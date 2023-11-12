@@ -55,10 +55,10 @@ public class Menu extends javax.swing.JPanel {
     }
 
     public void initMenuItem() {
-        //addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/thongke.png")), 20, 20), "Thống Kê"));
-        addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/sanpham.png")),20, 20), "Sản Phẩm","Giày Nam","Giày Nữ"));
+        addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/sanpham.png")),20, 20), "Sản Phẩm"));
         addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/nhanvien.png")),20, 20), "Nhân Viên"));
         addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/hoadon.png")),20, 20), "Hóa Đơn"));
+        addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/banhang.png")),20, 20), "Bán Hàng"));
         addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/khachhang.png")),20, 20), "Khách Hàng"));
         addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/lichsu.png")),20, 20), "Lịch Sử"));
         addMenu(new ModelMenu(resizeIcon(new ImageIcon(getClass().getResource("/com/raven/icon/khuyenmai.png")),20, 20), "Khuyến Mãi"));

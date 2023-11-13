@@ -4,9 +4,8 @@ import com.raven.component.Header;
 import com.raven.component.Menu;
 import com.raven.event.EventMenuSelected;
 import com.raven.event.EventShowPopupMenu;
-import com.raven.form.Form1;
-import com.raven.form.Form_Home;
 import com.raven.form.BanHangForm;
+import com.raven.form.DoiMK;
 import com.raven.form.HoaDonForm;
 import com.raven.form.KhuyenMai;
 import com.raven.form.LichSuHoaDonForm;
@@ -14,7 +13,6 @@ import com.raven.form.MainForm;
 import com.raven.form.QuanLyKhachHang;
 import com.raven.form.QuanLyNhanVien;
 import com.raven.form.SanPham;
-import com.raven.form.SanPhamm;
 import com.raven.form.Voucher;
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
@@ -23,8 +21,6 @@ import com.raven.swing.icon.IconFontSwing;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
@@ -43,6 +39,8 @@ public class Main extends javax.swing.JFrame {
         init();
     }
 
+    Login login = null;
+
     private void init() {
         layout = new MigLayout("fill", "0[]0[100%, fill]0", "0[fill, top]0");
         bg.setLayout(layout);
@@ -55,29 +53,26 @@ public class Main extends javax.swing.JFrame {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                 if (menuIndex == 0) {
                     main.showForm(new SanPham());
-//                    if (subMenuIndex == 0) {
-//                        main.showForm(new Form_Home());
-//                    } else if (subMenuIndex == 1) {
-//                        main.showForm(new Form1());
-//                    }
                 } else if (menuIndex == 1) {
                     main.showForm(new QuanLyNhanVien());
                 } else if (menuIndex == 2) {
                     main.showForm(new HoaDonForm());
                 } else if (menuIndex == 3) {
-                    main.showForm(new BanHangForm());   
+                    main.showForm(new BanHangForm());
                 } else if (menuIndex == 4) {
                     main.showForm(new QuanLyKhachHang());
                 } else if (menuIndex == 5) {
                     main.showForm(new LichSuHoaDonForm());
                 } else if (menuIndex == 6) {
-                    main.showForm(new KhuyenMai());
+                    if (subMenuIndex == 0) {
+                        main.showForm(new KhuyenMai());
+                    } else if (subMenuIndex == 1) {
+                        main.showForm(new Voucher());
+                    }
                 } else if (menuIndex == 7) {
-                    main.showForm(new Voucher());
-                } else if (menuIndex == 8) {
-                    main.showForm(new QuanLyNhanVien());
-                } else{
-                    main.showForm(new QuanLyNhanVien());
+                    main.showForm(new DoiMK());
+                } else {
+//                    main.showForm(new Login());
                 }
             }
         });
@@ -135,7 +130,13 @@ public class Main extends javax.swing.JFrame {
         //  Init google icon font
         IconFontSwing.register(GoogleMaterialDesignIcons.getIconFont());
         //  Start with this form
-        main.showForm(new Form_Home());
+        main.showForm(new SanPham());
+    }
+
+    void openLogin() {
+        login = new Login();
+        login.setVisible(true);
+        this.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")

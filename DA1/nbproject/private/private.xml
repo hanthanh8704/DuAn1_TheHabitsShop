@@ -3,9 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/classmodel/HoaDon.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/classinterface/SanPhamCTInf.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/classmodel/ChiTietSanPham.java</file>
             <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/main/Main.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/form/SanPham.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/component/Menu.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/form/HoaDonForm.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/classmodel/DeGiay.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/reponsitory/SanPhamChiTietRepository.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/reponsitory/ChiTietSanPhamRepon.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/classmodel/SanPhamChiTiet.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/classmodel/NhanVien.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/reponsitory/HoaDonRepon.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/form/LichSuHoaDonForm.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/classmodel/HoaDonChiTiet.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/classmodel/KhachHang.java</file>
         </group>
     </open-files>
 </project-private>

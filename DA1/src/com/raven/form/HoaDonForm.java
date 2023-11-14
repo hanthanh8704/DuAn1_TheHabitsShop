@@ -4,19 +4,90 @@
  */
 package com.raven.form;
 
+import com.raven.classmodel.ChiTietSanPham;
+import com.raven.classmodel.HoaDon;
+import com.raven.classmodel.SanPhamChiTiet;
+import com.raven.reponsitory.ChiTietSanPhamRepon;
+import com.raven.reponsitory.HoaDonRepon;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ADMIN
  */
 public class HoaDonForm extends javax.swing.JPanel {
 
+    HoaDonRepon reponHD = new HoaDonRepon();
+    ChiTietSanPhamRepon reponCTSP = new ChiTietSanPhamRepon();
+    DefaultTableModel model = new DefaultTableModel();
+    List<HoaDon> listHD = new ArrayList<>();
+    List<SanPhamChiTiet> listCTSP = new ArrayList<>();
+
     /**
      * Creates new form HoaDon
      */
     public HoaDonForm() {
         initComponents();
+        loadTableHoaDon(reponHD.getAll());
+        loadTableHoaDonCT(reponCTSP.getAll());
     }
 
+    void loadTableHoaDon(ArrayList<HoaDon> listHD) {
+        model = (DefaultTableModel) tblHoaDon.getModel();
+        model.setRowCount(0);
+        for (HoaDon hoaDon : listHD) {
+            Object[] row = new Object[]{
+                hoaDon.getId(),
+                hoaDon.getIdNhanVien().getMa(),
+                hoaDon.getIdKhachHang().getTen(),
+                hoaDon.getNgaytaohoadon(),
+                hoaDon.getNgaythanhtoan(),
+                hoaDon.getTongTien(),
+                hoaDon.getTinhTrang(),
+                hoaDon.getGhichu(),};
+            model.addRow(row);
+        }
+    }
+
+    void loadTableHoaDonCT(ArrayList<ChiTietSanPham> listCTSP) {
+        model = (DefaultTableModel) tblhoaDonCT.getModel();
+        model.setRowCount(0);
+        for (ChiTietSanPham ctsp : listCTSP) {
+            Object[] row = new Object[]{
+                ctsp.getStt(),
+                ctsp.getMa(),
+                ctsp.getTen(),
+                ctsp.getSoLuong(),
+                ctsp.getGia(),
+                ctsp.getId_mausac().getTen(),
+                ctsp.getId_kichCo().getTen(),
+                ctsp.getId_nhanHieu().getTen(),
+                ctsp.getId_chatlieu().getTen(),
+                ctsp.getId_deGiay().getTen(),
+                ctsp.getId_daygiay().getTen(),
+                ctsp.getId_hinhanh().getTen(),
+                ctsp.getId_kieuDang().getTen(),};
+            model.addRow(row);
+        }
+    }
+
+//    public void searchByTT() {
+//        if (rdoTatCa.isSelected()) {
+//            list = repon.getAll();
+//            model = (DefaultTableModel) tblHoaDon.getModel();
+//            showDataTable(list);
+//        } else if (rdoTien.isSelected()) {
+//            list = repon.getListByHTTT(1);
+//            model = (DefaultTableModel) tblHoaDon.getModel();
+//            showDataTable(list);
+//        } else if (rdoCK.isSelected()) {
+//            list = repon.getListByHTTT(0);
+//            model = (DefaultTableModel) tblHoaDon.getModel();
+//            showDataTable(list);
+//        }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,29 +121,29 @@ public class HoaDonForm extends javax.swing.JPanel {
         tblhoaDonCT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblhoaDonCT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID hóa đơn", "ID chi tiết sản phẩm", "Tên Giày", "Số lượng giày", "Hãng", "Màu", "Size", "Chất Liệu"
+                "STT", "Ma CTSP", "Tên", "Số lượng", "Giá", "Màu Sắc", "Kích Cỡ", "Nhãn Hiệu", "Chất Liệu", "Đế Giày", "Dây Giày", "Hình Ảnh", "Kiểu Dáng"
             }
         ));
         tblhoaDonCT.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,28 +204,28 @@ public class HoaDonForm extends javax.swing.JPanel {
 
         tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Mã hóa đơn", "Nhân viên", "Khách Hàng", "Giảm giá", "Ngày tạo", "Ngày Thanh Toán", "Tổng tiền gốc", "Tiền sau giảm giá", "Hình thức thanh toán", "Trạng thái", "Ghi chú"
+                "ID", "Mã Nhân Viên", "Tên Khách Hàng", "Ngày tạo", "Ngày Thanh Toán", "Tổng Tiền", "Trạng thái", "Ghi chú"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -187,7 +258,7 @@ public class HoaDonForm extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Tìm theo Mã HĐ");
+        jLabel1.setText("Tìm Kiếm");
 
         jButton1.setText("In hoá đơn");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -277,7 +348,7 @@ public class HoaDonForm extends javax.swing.JPanel {
                         .addGap(28, 28, 28)
                         .addComponent(cboNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(cboTT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane10)

@@ -4,10 +4,13 @@
  */
 package com.raven.classinterface;
 
+import java.util.List;
+import java.util.UUID;
+
 /**
  *
  * @author ADMIN
  */
-public interface HoaDonService {
-    
+public interface SanPhamCTInterface {
+
 }

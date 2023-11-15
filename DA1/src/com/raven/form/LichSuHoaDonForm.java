@@ -4,19 +4,94 @@
  */
 package com.raven.form;
 
+import com.raven.classmodel.HoaDon;
+import com.raven.classmodel.LichSuHoaDon;
+import com.raven.reponsitory.HoaDonRepon;
+import com.raven.reponsitory.LichSuHoaDonRepon;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ADMIN
  */
 public class LichSuHoaDonForm extends javax.swing.JPanel {
 
+    LichSuHoaDonRepon lshdRepon = new LichSuHoaDonRepon();
+    List<LichSuHoaDon> listLSHD = new ArrayList<>();
+    List<HoaDon> listHD = new ArrayList<>();
+    DefaultTableModel model = new DefaultTableModel();
+
     /**
      * Creates new form LichSuHoaDonForm
      */
     public LichSuHoaDonForm() {
         initComponents();
+        loadTableTTSP(lshdRepon.getAll());
+        loadTableHoaDon(lshdRepon.getList());
     }
 
+    void loadTableHoaDon(List<HoaDon> list) {
+        model = (DefaultTableModel) tblHoaDon.getModel();
+        model.setRowCount(0);
+        for (HoaDon hd : list) {
+            String tinhTrang = "";
+            int tinhTrangValue = hd.getTinhTrang();
+            if (tinhTrangValue == 1) {
+                tinhTrang = "Đã Giao Hàng";
+            } else if (tinhTrangValue == 2) {
+                tinhTrang = "Đã Hủy";
+            } else if (tinhTrangValue == 3) {
+                tinhTrang = "Chưa Thanh Toán";
+            } else {
+                tinhTrang = "Đã Thanh Toán";
+            }
+            Object[] row = new Object[]{
+                hd.getStt(),
+                hd.getMa(),
+                hd.getIdNhanVien().getTen(),
+                hd.getIdKhachHang().getTen(),
+                hd.getNgaytaohoadon(),
+                tinhTrang
+            };
+            model.addRow(row);
+        }
+    }
+
+    void loadTableTTSP(List<LichSuHoaDon> list) {
+        model = (DefaultTableModel) tblSanPham.getModel();
+        model.setRowCount(0);
+        for (LichSuHoaDon lshd : list) {
+            String tinhTrang = "";
+            int tinhTrangValue = lshd.getHoaDon().getTinhTrang();
+            if (tinhTrangValue == 1) {
+                tinhTrang = "Đã Giao Hàng";
+            } else if (tinhTrangValue == 2) {
+                tinhTrang = "Đã Hủy";
+            } else if (tinhTrangValue == 3) {
+                tinhTrang = "Chưa Thanh Toán";
+            } else {
+                tinhTrang = "Đã Thanh Toán";
+            }
+            Object[] row = new Object[]{
+                lshd.getHdct().getStt(),
+                lshd.getSpct().getMa(),
+                lshd.getSp().getTen(),
+                lshd.getSpct().getSoLuong(),
+                lshd.getSpct().getGia(),
+                lshd.getHoaDon().getTongTienHoaDon(),
+                tinhTrang,
+                lshd.getLiDoHuy()
+            };
+            model.addRow(row);
+        }
+    }
+
+    void showData(int index){
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,10 +123,10 @@ public class LichSuHoaDonForm extends javax.swing.JPanel {
         txaGhiChu = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblHoaDon = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblSanPham = new javax.swing.JTable();
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -151,18 +226,22 @@ public class LichSuHoaDonForm extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh Sách Hóa Đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Mã HĐ", "Tên NV", "Tên KH", "Ngày Tạo", "Trạng Thái"
+                "STT", "Mã HĐ", "Tên NV", "Tên KH", "Ngày Tạo", "Trạng Thái"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblHoaDon);
+        if (tblHoaDon.getColumnModel().getColumnCount() > 0) {
+            tblHoaDon.getColumnModel().getColumn(0).setMinWidth(50);
+            tblHoaDon.getColumnModel().getColumn(0).setMaxWidth(50);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -181,7 +260,7 @@ public class LichSuHoaDonForm extends javax.swing.JPanel {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông Tin Sản Phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -189,10 +268,14 @@ public class LichSuHoaDonForm extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã SP", "Tên SP", "Số Lượng", "Đơn Giá", "Giảm Giá", "Thành Tiền", "Trạng Thái", "Lí Do Hủy"
+                "STT", "Mã SP", "Tên SP", "Số Lượng", "Đơn Giá", "Thành Tiền", "Trạng Thái", "Lí Do Hủy"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblSanPham);
+        if (tblSanPham.getColumnModel().getColumnCount() > 0) {
+            tblSanPham.getColumnModel().getColumn(0).setMinWidth(50);
+            tblSanPham.getColumnModel().getColumn(0).setMaxWidth(50);
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -247,14 +330,12 @@ public class LichSuHoaDonForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tblHoaDon;
+    private javax.swing.JTable tblSanPham;
     private javax.swing.JTextArea txaGhiChu;
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtMaNV;
@@ -265,4 +346,5 @@ public class LichSuHoaDonForm extends javax.swing.JPanel {
     private javax.swing.JTextField txtTongTien;
     private javax.swing.JTextField txtTrangThai;
     // End of variables declaration//GEN-END:variables
+
 }

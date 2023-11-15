@@ -4,19 +4,22 @@
  */
 package com.raven.reponsitory;
 
+import com.raven.classinterface.HoaDonInteface;
 import com.raven.classmodel.HoaDon;
+import com.raven.classmodel.HoaDonChiTiet;
 import com.raven.classmodel.KhachHang;
 import com.raven.classmodel.NhanVien;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.sql.*;
+import java.util.List;
 import java.util.UUID;
 
 /**
  *
  * @author ADMIN
  */
-public class HoaDonRepon {
+public class HoaDonRepon implements HoaDonInteface{
 
     Connection conn = null;
     PreparedStatement ps = null;
@@ -25,7 +28,7 @@ public class HoaDonRepon {
 
     public ArrayList<HoaDon> getAll() {
         ArrayList<HoaDon> hoaDonList = new ArrayList<>();
-        sql = "SELECT HoaDon.id, NhanVien.ma, KhachHang.ten, HoaDon.ngaytaohoadon, HoaDon.ngaythanhtoan,"
+        sql = "SELECT HoaDon.ma AS 'MaHD', NhanVien.ma, KhachHang.ten, HoaDon.ngaytaohoadon, HoaDon.ngaythanhtoan,"
                 + " HoaDon.tongtiencuahoadon, HoaDon.tinhtrang, HoaDon.ghichu, "
                 + "NhanVien.id AS idNV, NhanVien.ten, KhachHang.id AS idKH, KhachHang.ten AS tenKH FROM HoaDon\n"
                 + "LEFT JOIN NhanVien ON HoaDon.id_nhanvien = NhanVien.id\n"
@@ -36,7 +39,7 @@ public class HoaDonRepon {
             rs = ps.executeQuery();
             while (rs.next()) {
                 //UUID id = UUID.fromString(rs.getString(1));
-                UUID idhd = UUID.fromString(rs.getString("id"));
+                String mahd = rs.getString("MaHD");
                 Date ngaytaohd = rs.getDate("ngaytaohoadon");
                 Date ngaythanhtoan = rs.getDate("ngaythanhtoan");
                 BigDecimal tongtien = rs.getBigDecimal("tongtiencuahoadon");
@@ -55,10 +58,10 @@ public class HoaDonRepon {
                 kh.setTen(tenkh);
 
                 HoaDon hoaDon = new HoaDon();
-                hoaDon.setId(idhd);
+                hoaDon.setMa(mahd);
                 hoaDon.setNgaytaohoadon(ngaytaohd);
                 hoaDon.setNgaythanhtoan(ngaythanhtoan);
-                hoaDon.setTongTien(tongtien);
+                hoaDon.setTongTienHoaDon(tongtien);
                 hoaDon.setTinhTrang(tinhtrang);
                 hoaDon.setGhichu(ghichu);
                 hoaDon.setIdNhanVien(nv);
@@ -71,4 +74,47 @@ public class HoaDonRepon {
         }
         return null;
     }
+    
+    @Override
+    public List<String> getListMa() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String getTenKHById(UUID id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String getMucGiamById(UUID id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String getTenNVKHById(UUID id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<HoaDonChiTiet> getListById(UUID id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<HoaDon> getListByHTTT(UUID id) {
+        String sql = "";
+        return null;
+    }
+
+    @Override
+    public List<HoaDon> getListByMa(String ma) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<HoaDon> getListByID(UUID id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    
 }

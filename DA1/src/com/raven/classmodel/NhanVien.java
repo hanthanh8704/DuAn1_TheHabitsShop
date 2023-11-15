@@ -11,15 +11,18 @@ import java.util.UUID;
  * @author ADMIN
  */
 public class NhanVien {
+
     private UUID id;
     private String ma;
+    private String ten;
 
     public NhanVien() {
     }
 
-    public NhanVien(UUID id, String ma) {
+    public NhanVien(UUID id, String ma, String ten) {
         this.id = id;
         this.ma = ma;
+        this.ten = ten;
     }
 
     public UUID getId() {
@@ -37,6 +40,13 @@ public class NhanVien {
     public void setMa(String ma) {
         this.ma = ma;
     }
-    
-    
+
+    public String getTen() {
+        return ten;
+    }
+
+    public void setTen(String ten) {
+        this.ten = ten;
+    }
+
 }

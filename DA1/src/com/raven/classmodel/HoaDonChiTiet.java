@@ -24,11 +24,34 @@ public class HoaDonChiTiet {
     private UUID idKhachHang;
     private UUID idSPCT;
     private UUID hoaDon;
+    private UUID id_nguoitao;
 
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(int stt, UUID id, int soLuong, BigDecimal soTienMat, BigDecimal soTienThe, BigDecimal tongTienCuaHDCT, BigDecimal gia_SPCT, String sdt, UUID idKhachHang, UUID idSPCT, UUID hoaDon) {
+    public HoaDonChiTiet(int stt, int soLuong, BigDecimal soTienMat, BigDecimal soTienThe, BigDecimal tongTienCuaHDCT, BigDecimal gia_SPCT, String sdt, UUID idKhachHang, UUID idSPCT, UUID hoaDon, UUID id_nguoitao) {
+        this.stt = stt;
+        this.soLuong = soLuong;
+        this.soTienMat = soTienMat;
+        this.soTienThe = soTienThe;
+        this.tongTienCuaHDCT = tongTienCuaHDCT;
+        this.gia_SPCT = gia_SPCT;
+        this.sdt = sdt;
+        this.idKhachHang = idKhachHang;
+        this.idSPCT = idSPCT;
+        this.hoaDon = hoaDon;
+        this.id_nguoitao = id_nguoitao;
+    }
+
+    public UUID getId_nguoitao() {
+        return id_nguoitao;
+    }
+
+    public void setId_nguoitao(UUID id_nguoitao) {
+        this.id_nguoitao = id_nguoitao;
+    }
+
+    public HoaDonChiTiet(int stt, UUID id, int soLuong, BigDecimal soTienMat, BigDecimal soTienThe, BigDecimal tongTienCuaHDCT, BigDecimal gia_SPCT, String sdt, UUID idKhachHang, UUID idSPCT, UUID hoaDon, UUID id_nguoitao) {
         this.stt = stt;
         this.id = id;
         this.soLuong = soLuong;
@@ -40,19 +63,7 @@ public class HoaDonChiTiet {
         this.idKhachHang = idKhachHang;
         this.idSPCT = idSPCT;
         this.hoaDon = hoaDon;
-    }
-
-    public HoaDonChiTiet(int stt, int soLuong, BigDecimal soTienMat, BigDecimal soTienThe, BigDecimal tongTienCuaHDCT, BigDecimal gia_SPCT, String sdt, UUID idKhachHang, UUID idSPCT, UUID hoaDon) {
-        this.stt = stt;
-        this.soLuong = soLuong;
-        this.soTienMat = soTienMat;
-        this.soTienThe = soTienThe;
-        this.tongTienCuaHDCT = tongTienCuaHDCT;
-        this.gia_SPCT = gia_SPCT;
-        this.sdt = sdt;
-        this.idKhachHang = idKhachHang;
-        this.idSPCT = idSPCT;
-        this.hoaDon = hoaDon;
+        this.id_nguoitao = id_nguoitao;
     }
 
     public int getStt() {

@@ -12,7 +12,7 @@ import com.raven.form.LichSuHoaDonForm;
 import com.raven.form.MainForm;
 import com.raven.form.QuanLyKhachHang;
 import com.raven.form.QuanLyNhanVien;
-import com.raven.form.SanPham;
+import com.raven.form.SanPhamForm;
 import com.raven.form.Voucher;
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
@@ -52,7 +52,7 @@ public class Main extends javax.swing.JFrame {
             public void menuSelected(int menuIndex, int subMenuIndex) {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                 if (menuIndex == 0) {
-                    main.showForm(new SanPham());
+                    main.showForm(new SanPhamForm());
                 } else if (menuIndex == 1) {
                     main.showForm(new QuanLyNhanVien());
                 } else if (menuIndex == 2) {
@@ -130,7 +130,7 @@ public class Main extends javax.swing.JFrame {
         //  Init google icon font
         IconFontSwing.register(GoogleMaterialDesignIcons.getIconFont());
         //  Start with this form
-        main.showForm(new SanPham());
+        main.showForm(new SanPhamForm());
     }
 
     void openLogin() {

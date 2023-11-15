@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author ADMIN
  */
-public interface HoaDonChiTietService {
+public interface HoaDonChiTietInterface {
     List<HoaDonChiTiet> getAll();
 
 }

@@ -5,32 +5,34 @@
 package com.raven.service;
 
 import com.raven.classinterface.TheHabitShop;
-import com.raven.classmodel.Voicher;
-import com.raven.reponsitory.DBconnect;
+import com.raven.classmodel.Voucher;
+import com.raven.reponsitory.DBConnect;
 import java.util.List;
 import java.sql.*;
 import java.util.ArrayList;
-
+import java.util.UUID;
+import java.util.Date;
 /**
  *
  * @author Ninh Than Thanh
  */
-public class VoicherService implements TheHabitShop<Voicher, String>{
+public class VoucherService implements TheHabitShop<Voucher, String>{
 
     Connection con = null;
     ResultSet rs = null;
     PreparedStatement ps = null;
     String sql = null;
     @Override
-    public List<Voicher> getAll() {
-        sql = "select ma,ten,mucgiamgia, soluong, ngaybatdau, ngayketthuc, trangthai,ngaytao from Voucher";
-        List<Voicher> list  = new ArrayList<>();
+    public List<Voucher> getAll() {
+        sql = "Select stt,ma,ten,mucgiamgia, soluong, ngaybatdau, ngayketthuc, trangthai,ngaytao \n" +
+"FROM Voucher";
+        List<Voucher> list  = new ArrayList<>();
         try {
-            con= DBconnect.getConnection();
+            con= DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                Voicher sv = new Voicher(rs.getString(1), rs.getString(2), rs.getBigDecimal(3), rs.getInt(4), rs.getDate(5), rs.getDate(6), rs.getInt(7),rs.getDate(8));
+                Voucher sv = new Voucher(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getBigDecimal(4), rs.getInt(5), rs.getDate(6), rs.getDate(7), rs.getInt(8),rs.getDate(9));
                 list.add(sv);
             }
             return list;
@@ -39,16 +41,16 @@ public class VoicherService implements TheHabitShop<Voicher, String>{
             return null;
         }
     }
-    public List<Voicher> getAll1(int trangthai) {
-        sql = "select ma,ten,mucgiamgia, soluong, ngaybatdau, ngayketthuc, trangthai,ngaytao from Voucher where trangthai = ?";
-        List<Voicher> list  = new ArrayList<>();
+    public List<Voucher> getAll1(int trangthai) {
+        sql = "select stt,ma,ten,mucgiamgia, soluong, ngaybatdau, ngayketthuc, trangthai,ngaytao from Voucher where trangthai = ?";
+        List<Voucher> list  = new ArrayList<>();
         try {
-            con= DBconnect.getConnection();
+            con= DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             ps.setObject(1, trangthai);
             rs = ps.executeQuery();
             while(rs.next()){
-                Voicher sv = new Voicher(rs.getString(1), rs.getString(2), rs.getBigDecimal(3), rs.getInt(4), rs.getDate(5), rs.getDate(6), rs.getInt(7),rs.getDate(8));
+                Voucher sv = new Voucher(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getBigDecimal(4), rs.getInt(5), rs.getDate(6), rs.getDate(7), rs.getInt(8),rs.getDate(9));
                 list.add(sv);
             }
             return list;
@@ -59,11 +61,11 @@ public class VoicherService implements TheHabitShop<Voicher, String>{
     }
 
     @Override
-    public int insert(Voicher entity) {
+    public int insert(Voucher entity) {
         sql="INSERT INTO Voucher(ma,ten,mucgiamgia, soluong, ngaybatdau, ngayketthuc,ngaytao) VALUES\n" +
 "(?,?,?,?,?,?,?);";
         try {
-            con = DBconnect.getConnection();
+            con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             ps.setObject(1, entity.getMa());
             ps.setObject(2, entity.getTen());
@@ -80,10 +82,10 @@ public class VoicherService implements TheHabitShop<Voicher, String>{
     }
 
     @Override
-    public int update(Voicher entity, String id) {
-        sql="UPDATE Voucher SET ten=?,mucgiamgia=?,soluong=?,ngaybatdau=?,ngayketthuc=?,ngaytao=? WHERE ma =?";
+    public int update(Voucher entity, String id) {
+        sql="UPDATE Voucher SET ten=?,mucgiamgia=?,soluong=?,ngaybatdau=?,ngayketthuc=?,ngaytao=?,trangthai =? WHERE ma =?";
         try {
-            con = DBconnect.getConnection();
+            con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             ps.setObject(1, entity.getTen());
             ps.setObject(2, entity.getMucGiam());
@@ -91,7 +93,34 @@ public class VoicherService implements TheHabitShop<Voicher, String>{
             ps.setObject(4, entity.getNgayBatDau());
             ps.setObject(5, entity.getNgayKetThuc());
             ps.setObject(6, entity.getNgayTao());
-            ps.setObject(7, entity.getMa());
+            ps.setObject(7, entity.getTrangThai());
+            ps.setObject(8, entity.getMa());
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    public int update1(Voucher entity, Date ngayHienTai) {
+        sql="UPDATE Voucher SET trangthai =? WHERE ngaybatdau=?";
+        try {
+            con = DBConnect.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setObject(1, entity.getTrangThai());
+            ps.setObject(2, ngayHienTai);
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    public int update2(Voucher entity, Date ngayHienTai) {
+        sql="UPDATE Voucher SET trangthai =? WHERE ngayketthuc =?";
+        try {
+            con = DBConnect.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setObject(1, entity.getTrangThai());
+            ps.setObject(2, ngayHienTai);
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -103,7 +132,7 @@ public class VoicherService implements TheHabitShop<Voicher, String>{
     public int delete(String id) {
      sql="DELETE FROM Voucher WHERE ma = ?";
         try {
-            con = DBconnect.getConnection();
+            con = DBConnect.getConnection();
             ps= con.prepareStatement(sql);
             ps.setObject(1, id);
             return ps.executeUpdate();
@@ -114,16 +143,16 @@ public class VoicherService implements TheHabitShop<Voicher, String>{
     }
 
     @Override
-    public Voicher getID(String id) {
-     Voicher nv = null;
+    public Voucher getID(String id) {
+     Voucher nv = null;
         sql="select ma,ten,mucgiamgia, soluong, ngaybatdau, ngayketthuc, trangthai,ngaytao from Voucher where ma = ?";
         try {
-            con = DBconnect.getConnection();
+            con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             ps.setObject(1, id);
             rs =ps.executeQuery();
             while(rs.next()){
-                nv = new Voicher(rs.getString(1), rs.getString(2), rs.getBigDecimal(3), rs.getInt(4), rs.getDate(5), rs.getDate(6), rs.getInt(7),rs.getDate(8));
+                nv = new Voucher(rs.getString(1), rs.getString(2), rs.getBigDecimal(3), rs.getInt(4), rs.getDate(5), rs.getDate(6), rs.getInt(7),rs.getDate(8));
             }
             return nv;
         } catch (Exception e) {
@@ -133,7 +162,7 @@ public class VoicherService implements TheHabitShop<Voicher, String>{
     }
 
     @Override
-    public List<Voicher> getSql(String sql, Object... args) {
+    public List<Voucher> getSql(String sql, Object... args) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

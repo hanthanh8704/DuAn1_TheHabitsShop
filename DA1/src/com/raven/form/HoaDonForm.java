@@ -4,18 +4,67 @@
  */
 package com.raven.form;
 
+import com.raven.classmodel.HoaDon;
+import com.raven.reponsitory.HoaDonRepon;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ADMIN
  */
 public class HoaDonForm extends javax.swing.JPanel {
 
+    HoaDonRepon repon = new HoaDonRepon();
+    DefaultTableModel model = new DefaultTableModel();
+    List<HoaDon> list = new ArrayList<>();
+
     /**
      * Creates new form HoaDon
      */
     public HoaDonForm() {
         initComponents();
+        loadTableHoaDon(repon.getAll());
+        loadTableHoaDonCT();
     }
+
+    void loadTableHoaDon(ArrayList<HoaDon> list) {
+        model = (DefaultTableModel) tblHoaDon.getModel();
+        model.setRowCount(0);
+        for (HoaDon hoaDon : list) {
+            Object[] row = new Object[]{
+                hoaDon.getId(),
+                hoaDon.getIdNhanVien().getMa(),
+                hoaDon.getIdKhachHang().getTen(),
+                hoaDon.getNgaytaohoadon(),
+                hoaDon.getNgaythanhtoan(),
+                hoaDon.getTongTien(),
+                hoaDon.getTinhTrang(),
+                hoaDon.getGhichu(),};
+            model.addRow(row);
+        }
+    }
+
+    void loadTableHoaDonCT(){
+        
+    }
+    
+//    public void searchByTT() {
+//        if (rdoTatCa.isSelected()) {
+//            list = repon.getAll();
+//            model = (DefaultTableModel) tblHoaDon.getModel();
+//            showDataTable(list);
+//        } else if (rdoTien.isSelected()) {
+//            list = repon.getListByHTTT(1);
+//            model = (DefaultTableModel) tblHoaDon.getModel();
+//            showDataTable(list);
+//        } else if (rdoCK.isSelected()) {
+//            list = repon.getListByHTTT(0);
+//            model = (DefaultTableModel) tblHoaDon.getModel();
+//            showDataTable(list);
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,29 +99,29 @@ public class HoaDonForm extends javax.swing.JPanel {
         tblhoaDonCT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblhoaDonCT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID hóa đơn", "ID chi tiết sản phẩm", "Tên Giày", "Số lượng giày", "Hãng", "Màu", "Size", "Chất Liệu"
+                "STT", "Ma CTSP", "Tên", "Số lượng", "Giá", "Màu Sắc", "Kích Cỡ", "Nhãn Hiệu", "Chất Liệu", "Đế Giày", "Dây Giày", "Hình Ảnh", "Kiểu Dáng"
             }
         ));
         tblhoaDonCT.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,28 +182,28 @@ public class HoaDonForm extends javax.swing.JPanel {
 
         tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Mã hóa đơn", "Nhân viên", "Khách Hàng", "Giảm giá", "Ngày tạo", "Ngày Thanh Toán", "Tổng tiền gốc", "Tiền sau giảm giá", "Hình thức thanh toán", "Trạng thái", "Ghi chú"
+                "STT", "ID", "Mã Nhân Viên", "Tên Khách Hàng", "Ngày tạo", "Ngày Thanh Toán", "Tổng Tiền", "Trạng thái", "Ghi chú"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false
+                true, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -187,7 +236,7 @@ public class HoaDonForm extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Tìm theo Mã HĐ");
+        jLabel1.setText("Tìm Kiếm");
 
         jButton1.setText("In hoá đơn");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -277,7 +326,7 @@ public class HoaDonForm extends javax.swing.JPanel {
                         .addGap(28, 28, 28)
                         .addComponent(cboNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(cboTT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane10)

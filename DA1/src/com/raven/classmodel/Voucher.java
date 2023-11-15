@@ -8,12 +8,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 
+
 /**
  *
  * @author Ninh Than Thanh
  */
-public class Voicher {
-    private UUID id;
+public class Voucher {
+    private int id;
     private String ma;
     private String ten;
     private BigDecimal mucGiam;
@@ -23,10 +24,10 @@ public class Voicher {
     private int trangThai;
     private Date ngayTao;
 
-    public Voicher() {
+    public Voucher() {
     }
 
-    public Voicher(UUID id, String ma, String ten, BigDecimal mucGiam, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai,Date ngayTao) {
+    public Voucher(int id, String ma, String ten, BigDecimal mucGiam, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai, Date ngayTao) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
@@ -38,7 +39,7 @@ public class Voicher {
         this.ngayTao = ngayTao;
     }
 
-    public Voicher(String ma, String ten, BigDecimal mucGiam, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai, Date ngayTao) {
+    public Voucher(String ma, String ten, BigDecimal mucGiam, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai, Date ngayTao) {
         this.ma = ma;
         this.ten = ten;
         this.mucGiam = mucGiam;
@@ -49,7 +50,7 @@ public class Voicher {
         this.ngayTao = ngayTao;
     }
 
-    public Voicher(String ma, String ten, BigDecimal mucGiam, int soLuong, Date ngayBatDau, Date ngayKetThuc, Date ngayTao) {
+    public Voucher(String ma, String ten, BigDecimal mucGiam, int soLuong, Date ngayBatDau, Date ngayKetThuc, Date ngayTao) {
         this.ma = ma;
         this.ten = ten;
         this.mucGiam = mucGiam;
@@ -59,11 +60,15 @@ public class Voicher {
         this.ngayTao = ngayTao;
     }
 
-    public UUID getId() {
+    public Voucher(int trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -131,6 +136,6 @@ public class Voicher {
         this.ngayTao = ngayTao;
     }
     public Object[] toDaTaRow(){
-        return new Object[] {this.getMa(),this.getTen(),this.getMucGiam(),this.getSoLuong(),this.getNgayBatDau(),this.getNgayKetThuc(),this.getTrangThai(),this.getNgayTao()};
+        return new Object[] {this.getId(),this.getMa(),this.getTen(),this.getMucGiam(),this.getSoLuong(),this.getNgayBatDau(),this.getNgayKetThuc(),this.getTrangThai(),this.getNgayTao()};
     }
 }

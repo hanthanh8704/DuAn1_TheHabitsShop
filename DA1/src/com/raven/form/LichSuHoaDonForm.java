@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class LichSuHoaDonForm extends javax.swing.JPanel {
 
     LichSuHoaDonRepon lshdRepon = new LichSuHoaDonRepon();
+    HoaDonRepon reponHoaDon = new HoaDonRepon();
     List<LichSuHoaDon> listLSHD = new ArrayList<>();
     List<HoaDon> listHD = new ArrayList<>();
     DefaultTableModel model = new DefaultTableModel();
@@ -52,11 +53,25 @@ public class LichSuHoaDonForm extends javax.swing.JPanel {
                 hd.getMa(),
                 hd.getIdNhanVien().getTen(),
                 hd.getIdKhachHang().getTen(),
+                hd.getDiaChi(),
                 hd.getNgaytaohoadon(),
                 tinhTrang
             };
             model.addRow(row);
         }
+    }
+
+    void showData(int index) {
+        HoaDon hd = reponHoaDon.mouseClick().get(index);
+        txtMaNV.setText(hd.getIdNhanVien().getMa());
+        txtTenNV.setText(hd.getIdNhanVien().getTen());
+        txtTenKH.setText(hd.getIdKhachHang().getTen());
+        txtSDT.setText(hd.getIdKhachHang().getSdt());
+        txtDiaChi.setText(hd.getDiaChi());
+        txtTongTien.setText(String.valueOf(hd.getTongTienHoaDon()));
+        txtNgayTao.setText(String.valueOf(hd.getNgaytaohoadon()));
+        txtTrangThai.setText(String.valueOf(hd.getTinhTrang()));
+        txaGhiChu.setText(hd.getGhichu());
     }
 
     void loadTableTTSP(List<LichSuHoaDon> list) {
@@ -88,10 +103,6 @@ public class LichSuHoaDonForm extends javax.swing.JPanel {
         }
     }
 
-    void showData(int index){
-        
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -228,15 +239,20 @@ public class LichSuHoaDonForm extends javax.swing.JPanel {
 
         tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Mã HĐ", "Tên NV", "Tên KH", "Ngày Tạo", "Trạng Thái"
+                "STT", "Mã HĐ", "Tên NV", "Tên KH", "Địa Chỉ", "Ngày Tạo", "Trạng Thái"
             }
         ));
+        tblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblHoaDonMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblHoaDon);
         if (tblHoaDon.getColumnModel().getColumnCount() > 0) {
             tblHoaDon.getColumnModel().getColumn(0).setMinWidth(50);
@@ -253,9 +269,10 @@ public class LichSuHoaDonForm extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(33, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông Tin Sản Phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
@@ -316,6 +333,12 @@ public class LichSuHoaDonForm extends javax.swing.JPanel {
                 .addGap(11, 11, 11))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
+        // TODO add your handling code here:
+        int row = tblHoaDon.getSelectedRow();
+        this.showData(row);
+    }//GEN-LAST:event_tblHoaDonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

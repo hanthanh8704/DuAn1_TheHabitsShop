@@ -14,13 +14,15 @@ public class KhachHang {
 
     private UUID id;
     private String ten;
+    private String sdt;
 
     public KhachHang() {
     }
 
-    public KhachHang(UUID id, String ten) {
+    public KhachHang(UUID id, String ten, String sdt) {
         this.id = id;
         this.ten = ten;
+        this.sdt = sdt;
     }
 
     public UUID getId() {
@@ -37,6 +39,14 @@ public class KhachHang {
 
     public void setTen(String ten) {
         this.ten = ten;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
     }
 
 }

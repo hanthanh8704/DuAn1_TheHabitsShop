@@ -2,18 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/classinterface/HoaDonChiTietInterface.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/form/BanHangForm.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/reponsitory/MauSacRepon.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/main/Main.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/reponsitory/ChiTietSanPhamRepon.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/reponsitory/HoaDonChiTietRepon.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/classinterface/SanPhamCTInterface.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/form/HoaDonForm.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/reponsitory/HoaDonRepon.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/classmodel/HoaDonChiTiet.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/DA_Nhom5_SD18322/DA1/src/com/raven/reponsitory/LichSuHoaDonRepon.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

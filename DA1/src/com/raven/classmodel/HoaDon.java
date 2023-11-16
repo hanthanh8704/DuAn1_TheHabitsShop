@@ -31,10 +31,12 @@ public class HoaDon {
     private String ghichu;
     private KhachHang idKhachHang;
     private NhanVien idNhanVien;
+    private HinhThucThanhToan httt;
+    private ThanhToan thanhToan;
     private UUID id_nguoiTao;
     private Date ngayTao;
 
-    public HoaDon(Integer stt, UUID id, String ma, String tenNguoiNhan, String diaChi, Date ngayXacNhan, BigDecimal phiVC, Date ngayVanChuyen, Date ngaytaohoadon, Date ngaynhanHang, Date ngaythanhtoan, BigDecimal tongTienHoaDon, BigDecimal tongTienSauGiamGia, Integer tinhTrang, String ghichu, KhachHang idKhachHang, NhanVien idNhanVien, UUID id_nguoiTao, Date ngayTao) {
+    public HoaDon(Integer stt, UUID id, String ma, String tenNguoiNhan, String diaChi, Date ngayXacNhan, BigDecimal phiVC, Date ngayVanChuyen, Date ngaytaohoadon, Date ngaynhanHang, Date ngaythanhtoan, BigDecimal tongTienHoaDon, BigDecimal tongTienSauGiamGia, Integer tinhTrang, String ghichu, KhachHang idKhachHang, NhanVien idNhanVien, HinhThucThanhToan httt, ThanhToan thanhToan, UUID id_nguoiTao, Date ngayTao) {
         this.stt = stt;
         this.id = id;
         this.ma = ma;
@@ -52,11 +54,13 @@ public class HoaDon {
         this.ghichu = ghichu;
         this.idKhachHang = idKhachHang;
         this.idNhanVien = idNhanVien;
+        this.httt = httt;
+        this.thanhToan = thanhToan;
         this.id_nguoiTao = id_nguoiTao;
         this.ngayTao = ngayTao;
     }
 
-    public HoaDon(Integer stt, String ma, String tenNguoiNhan, String diaChi, Date ngayXacNhan, BigDecimal phiVC, Date ngayVanChuyen, Date ngaytaohoadon, Date ngaynhanHang, Date ngaythanhtoan, BigDecimal tongTienHoaDon, BigDecimal tongTienSauGiamGia, Integer tinhTrang, String ghichu, KhachHang idKhachHang, NhanVien idNhanVien, UUID id_nguoiTao, Date ngayTao) {
+    public HoaDon(Integer stt, String ma, String tenNguoiNhan, String diaChi, Date ngayXacNhan, BigDecimal phiVC, Date ngayVanChuyen, Date ngaytaohoadon, Date ngaynhanHang, Date ngaythanhtoan, BigDecimal tongTienHoaDon, BigDecimal tongTienSauGiamGia, Integer tinhTrang, String ghichu, KhachHang idKhachHang, NhanVien idNhanVien, HinhThucThanhToan httt, ThanhToan thanhToan, UUID id_nguoiTao, Date ngayTao) {
         this.stt = stt;
         this.ma = ma;
         this.tenNguoiNhan = tenNguoiNhan;
@@ -73,11 +77,13 @@ public class HoaDon {
         this.ghichu = ghichu;
         this.idKhachHang = idKhachHang;
         this.idNhanVien = idNhanVien;
+        this.httt = httt;
+        this.thanhToan = thanhToan;
         this.id_nguoiTao = id_nguoiTao;
         this.ngayTao = ngayTao;
     }
 
-    public HoaDon(Integer stt, String ma, String tenNguoiNhan, String diaChi, Date ngayXacNhan, BigDecimal phiVC, Date ngayVanChuyen, Date ngaytaohoadon, Date ngaynhanHang, Date ngaythanhtoan, BigDecimal tongTienHoaDon, BigDecimal tongTienSauGiamGia, Integer tinhTrang, String ghichu, KhachHang idKhachHang, NhanVien idNhanVien) {
+    public HoaDon(Integer stt, String ma, String tenNguoiNhan, String diaChi, Date ngayXacNhan, BigDecimal phiVC, Date ngayVanChuyen, Date ngaytaohoadon, Date ngaynhanHang, Date ngaythanhtoan, BigDecimal tongTienHoaDon, BigDecimal tongTienSauGiamGia, Integer tinhTrang, String ghichu, KhachHang idKhachHang, NhanVien idNhanVien, HinhThucThanhToan httt, ThanhToan thanhToan) {
         this.stt = stt;
         this.ma = ma;
         this.tenNguoiNhan = tenNguoiNhan;
@@ -94,6 +100,24 @@ public class HoaDon {
         this.ghichu = ghichu;
         this.idKhachHang = idKhachHang;
         this.idNhanVien = idNhanVien;
+        this.httt = httt;
+        this.thanhToan = thanhToan;
+    }
+
+    public HinhThucThanhToan getHttt() {
+        return httt;
+    }
+
+    public void setHttt(HinhThucThanhToan httt) {
+        this.httt = httt;
+    }
+
+    public ThanhToan getThanhToan() {
+        return thanhToan;
+    }
+
+    public void setThanhToan(ThanhToan thanhToan) {
+        this.thanhToan = thanhToan;
     }
 
     public Integer getStt() {

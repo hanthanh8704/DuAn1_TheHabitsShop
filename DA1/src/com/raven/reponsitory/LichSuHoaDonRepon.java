@@ -82,8 +82,8 @@ public class LichSuHoaDonRepon {
 
     public List<HoaDon> getList() {
         List<HoaDon> listHD = new ArrayList<>();
-        String sql = "SELECT HoaDon.stt, HoaDon.ma, NhanVien.ten AS 'tenNV', KhachHang.ten AS 'tenKH',"
-                + " ngaytaohoadon, tinhtrang FROM HoaDon \n"
+        String sql = "SELECT HoaDon.stt, HoaDon.ma, NhanVien.ten AS 'tenNV', \n"
+                + "KhachHang.ten AS 'tenKH',HoaDon.diachi, ngaytaohoadon, tinhtrang FROM HoaDon\n"
                 + "JOIN NhanVien ON NhanVien.id = HoaDon.id_nhanvien\n"
                 + "JOIN KhachHang ON KhachHang.id = HoaDon.id_khachhang";
         try {
@@ -95,6 +95,7 @@ public class LichSuHoaDonRepon {
                 String ma = rs.getString("ma");
                 String tennv = rs.getString("tenNV");
                 String tenkh = rs.getString("tenKH");
+                String diachi = rs.getString("diachi");
                 Date ngaytaohd = rs.getDate("ngaytaohoadon");
                 Integer tinhtrang = rs.getInt("tinhtrang");
 
@@ -110,6 +111,7 @@ public class LichSuHoaDonRepon {
                 hd.setNgaytaohoadon(ngaytaohd);
                 hd.setTinhTrang(tinhtrang);
                 hd.setIdKhachHang(kh);
+                hd.setDiaChi(diachi);
                 hd.setIdNhanVien(nv);
                 listHD.add(hd);
             }

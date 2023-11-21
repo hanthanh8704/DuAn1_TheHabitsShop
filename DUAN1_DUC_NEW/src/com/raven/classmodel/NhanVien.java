@@ -14,57 +14,60 @@ import java.util.UUID;
 public class NhanVien {
 
     private UUID id;
-    private int STT;
     private String maNV;
     private String tenNV;
-    private ChucVu id_chucVu;
-    private boolean gioiTinh;
+    private ChucVu tenCV;
     private Date ngaySinh;
     private String cccd;
     private String email;
     private String diaChi;
     private String SDT;
+    private int gioiTinh;
+    private int trangThai = 1;
+    private String matKhau = "khongbiet123";
+    private String id_nguoiTao;
+
+    public NhanVien(String maNV, String tenNV, ChucVu id_chucVu, Date ngaySinh, String cccd, String email, String diaChi, String SDT, int gioiTinh, int trangThai) {
+        this.maNV = maNV;
+        this.tenNV = tenNV;
+        this.tenCV = id_chucVu;
+        this.ngaySinh = ngaySinh;
+        this.cccd = cccd;
+        this.email = email;
+        this.diaChi = diaChi;
+        this.SDT = SDT;
+        this.gioiTinh = gioiTinh;
+        this.trangThai = trangThai;
+    }
+
+    public NhanVien(UUID id, String maNV, String tenNV, ChucVu id_chucVu, Date ngaySinh, String cccd, String email, String diaChi, String SDT, int gioiTinh) {
+        this.id = id;
+        this.maNV = maNV;
+        this.tenNV = tenNV;
+        this.tenCV = id_chucVu;
+        this.ngaySinh = ngaySinh;
+        this.cccd = cccd;
+        this.email = email;
+        this.diaChi = diaChi;
+        this.SDT = SDT;
+        this.gioiTinh = gioiTinh;
+    }
+
+    public NhanVien(UUID id, String maNV, String tenNV, ChucVu id_chucVu, Date ngaySinh, String cccd, String email, String diaChi, String SDT, int gioiTinh, String id_nguoiTao) {
+        this.id = id;
+        this.maNV = maNV;
+        this.tenNV = tenNV;
+        this.tenCV = id_chucVu;
+        this.ngaySinh = ngaySinh;
+        this.cccd = cccd;
+        this.email = email;
+        this.diaChi = diaChi;
+        this.SDT = SDT;
+        this.gioiTinh = gioiTinh;
+        this.id_nguoiTao = id_nguoiTao;
+    }
 
     public NhanVien() {
-    }
-
-    public NhanVien(UUID id, int STT, String maNV, String tenNV, ChucVu id_chucVu, boolean gioiTinh, Date ngaySinh, String cccd, String email, String diaChi, String SDT) {
-        this.id = id;
-        this.STT = STT;
-        this.maNV = maNV;
-        this.tenNV = tenNV;
-        this.id_chucVu = id_chucVu;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
-        this.cccd = cccd;
-        this.email = email;
-        this.diaChi = diaChi;
-        this.SDT = SDT;
-    }
-
-    public NhanVien(int STT, String maNV, String tenNV, ChucVu id_chucVu, boolean gioiTinh, Date ngaySinh, String cccd, String email, String diaChi, String SDT) {
-        this.STT = STT;
-        this.maNV = maNV;
-        this.tenNV = tenNV;
-        this.id_chucVu = id_chucVu;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
-        this.cccd = cccd;
-        this.email = email;
-        this.diaChi = diaChi;
-        this.SDT = SDT;
-    }
-
-    public NhanVien(String maNV, String tenNV, ChucVu id_chucVu, boolean gioiTinh, Date ngaySinh, String cccd, String email, String diaChi, String SDT) {
-        this.maNV = maNV;
-        this.tenNV = tenNV;
-        this.id_chucVu = id_chucVu;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
-        this.cccd = cccd;
-        this.email = email;
-        this.diaChi = diaChi;
-        this.SDT = SDT;
     }
 
     public UUID getId() {
@@ -73,14 +76,6 @@ public class NhanVien {
 
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public int getSTT() {
-        return STT;
-    }
-
-    public void setSTT(int STT) {
-        this.STT = STT;
     }
 
     public String getMaNV() {
@@ -100,19 +95,11 @@ public class NhanVien {
     }
 
     public ChucVu getId_chucVu() {
-        return id_chucVu;
+        return tenCV;
     }
 
     public void setId_chucVu(ChucVu id_chucVu) {
-        this.id_chucVu = id_chucVu;
-    }
-
-    public boolean isGioiTinh() {
-        return gioiTinh;
-    }
-
-    public void setGioiTinh(boolean gioiTinh) {
-        this.gioiTinh = gioiTinh;
+        this.tenCV = id_chucVu;
     }
 
     public Date getNgaySinh() {
@@ -153,6 +140,54 @@ public class NhanVien {
 
     public void setSDT(String SDT) {
         this.SDT = SDT;
+    }
+
+    public int getGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(int gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+    public int getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public String getMatKhau() {
+        return matKhau;
+    }
+
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
+    }
+
+    public String getId_nguoiTao() {
+        return id_nguoiTao;
+    }
+
+    public void setId_nguoiTao(String id_nguoiTao) {
+        this.id_nguoiTao = id_nguoiTao;
+    }
+
+    public String hienThiGioiTinh() {
+        if (gioiTinh == 1) {
+            return "Nam";
+        } else {
+            return "Nữ";
+        }
+    }
+
+    public String hienThiTrangThai() {
+        if (trangThai == 1) {
+            return "Đang làm";
+        } else {
+            return "Nghỉ làm";
+        }
     }
 
 }

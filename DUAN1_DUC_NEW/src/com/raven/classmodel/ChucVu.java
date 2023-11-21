@@ -13,9 +13,16 @@ import java.util.UUID;
 public class ChucVu {
 
     private UUID id;
+    private String maCV;
     private String tenCV;
 
     public ChucVu() {
+    }
+
+    public ChucVu(UUID id, String maCV, String tenCV) {
+        this.id = id;
+        this.maCV = maCV;
+        this.tenCV = tenCV;
     }
 
     public ChucVu(UUID id, String tenCV) {
@@ -23,10 +30,17 @@ public class ChucVu {
         this.tenCV = tenCV;
     }
 
+    public String getMaCV() {
+        return maCV;
+    }
+
+    public void setMaCV(String maCV) {
+        this.maCV = maCV;
+    }
+
     public ChucVu(String tenCV) {
         this.tenCV = tenCV;
     }
-    
 
     public UUID getId() {
         return id;
@@ -43,5 +57,7 @@ public class ChucVu {
     public void setTenCV(String tenCV) {
         this.tenCV = tenCV;
     }
+
+  
 
 }

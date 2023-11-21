@@ -54,7 +54,7 @@ public class Main extends javax.swing.JFrame {
                 if (menuIndex == 0) {
                     main.showForm(new SanPham());
                 } else if (menuIndex == 1) {
-                    main.showForm(new QuanLyNhanVien());
+                     main.showForm(new QuanLyNhanVien());
                 } else if (menuIndex == 2) {
                     main.showForm(new HoaDonForm());
                 } else if (menuIndex == 3) {
@@ -146,7 +146,6 @@ public class Main extends javax.swing.JFrame {
         bg = new javax.swing.JLayeredPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         bg.setBackground(new java.awt.Color(245, 245, 245));
         bg.setOpaque(true);
@@ -170,7 +169,7 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg)
+            .addComponent(bg, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -213,4 +212,5 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane bg;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -5,10 +5,12 @@
 package com.raven.reponsitory;
 
 import com.raven.classmodel.ChucVu;
+
 import com.raven.service.DBConnect;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
+import java.util.UUID;
 
 /**
  *
@@ -23,15 +25,18 @@ public class ChucVu_DAO {
 
     public List<ChucVu> getAll() {
 
-        List<ChucVu> listCV = new ArrayList<>();
-        sql = "SELECT tencv FROM ChucVu";
+        List<ChucVu> listCV = new ArrayList();
+        sql = "SELECT id , ma , tencv FROM ChucVu  ";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                ChucVu cv = new ChucVu(rs.getString(1));
+                ChucVu cv = new ChucVu(
+                        UUID.fromString(rs.getString(1)),
+                        rs.getString(2),
+                        rs.getString(3));
                 listCV.add(cv);
             }
             return listCV;
@@ -42,24 +47,6 @@ public class ChucVu_DAO {
         return null;
     }
 
-    public ChucVu selectById(String tenCV) {
-        List<ChucVu> listCV = new ArrayList<>();
-        sql = "SELECT tencv FROM ChucVu where tencv =?";
-        try {
-            con = DBConnect.getConnection();
-            ps = con.prepareStatement(sql);
-            ps.setObject(1, tenCV);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                ChucVu cv = new ChucVu(rs.getString(1));
-                listCV.add(cv);
-            }
+ 
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return null;
-
-    }
 }

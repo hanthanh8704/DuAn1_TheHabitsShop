@@ -64,6 +64,10 @@ public class NhanVien {
         this.SDT = SDT;
     }
 
+    public NhanVien(UUID id) {
+        this.id = id;
+    }
+
     public NhanVien(int STT, String maNV, String tenNV, ChucVu id_chucVu, boolean gioiTinh, Date ngaySinh, String cccd, String email, String diaChi, String SDT) {
         this.STT = STT;
         this.maNV = maNV;

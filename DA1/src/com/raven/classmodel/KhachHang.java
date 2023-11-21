@@ -5,6 +5,7 @@
 package com.raven.classmodel;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  *
@@ -12,6 +13,7 @@ import java.util.Date;
  */
 public class KhachHang {
 
+    private UUID id;
     private String maKH;
     private int STT;
     private String tenKH;
@@ -24,6 +26,22 @@ public class KhachHang {
     public KhachHang(int STT, String maKH, String tenKH, boolean gioiTinh, Date ngaySinh, String sdt, String email, String diaChi) {
         this.STT = STT;
         this.maKH = maKH;
+        this.tenKH = tenKH;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
+        this.sdt = sdt;
+        this.email = email;
+        this.diaChi = diaChi;
+    }
+
+    public KhachHang(UUID id) {
+        this.id = id;
+    }
+
+    public KhachHang(UUID id, String maKH, int STT, String tenKH, boolean gioiTinh, Date ngaySinh, String sdt, String email, String diaChi) {
+        this.id = id;
+        this.maKH = maKH;
+        this.STT = STT;
         this.tenKH = tenKH;
         this.gioiTinh = gioiTinh;
         this.ngaySinh = ngaySinh;

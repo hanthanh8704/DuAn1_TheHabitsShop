@@ -35,8 +35,8 @@ public class HoaDonForm extends javax.swing.JPanel {
         for (HoaDon hoaDon : list) {
             Object[] row = new Object[]{
                 hoaDon.getId(),
-                hoaDon.getIdNhanVien().getMa(),
-                hoaDon.getIdKhachHang().getTen(),
+                hoaDon.getIdNhanVien().getMaNV(),
+                hoaDon.getIdKhachHang().getTenKH(),
                 hoaDon.getNgaytaohoadon(),
                 hoaDon.getNgaythanhtoan(),
                 hoaDon.getTongTien(),

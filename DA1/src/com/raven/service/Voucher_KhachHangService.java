@@ -35,7 +35,7 @@ Connection con = null;
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                Voucher sv = new Voucher(UUID.fromString(rs.getString(1)),rs.getString(2), rs.getString(3), rs.getBigDecimal(4), rs.getInt(5), rs.getDate(6), rs.getDate(7), rs.getInt(8),rs.getDate(9));
+                Voucher_KhachHang sv = new Voucher_KhachHang(UUID.fromString(rs.getString(1)),rs.getString(2), rs.getString(3), rs.getBigDecimal(4), rs.getInt(5), rs.getDate(6), rs.getDate(7), rs.getInt(8),rs.getDate(9));
                 list.add(sv);
             }
             return list;

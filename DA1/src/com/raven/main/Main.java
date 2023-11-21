@@ -149,6 +149,7 @@ public class Main extends javax.swing.JFrame {
         setUndecorated(true);
 
         bg.setBackground(new java.awt.Color(245, 245, 245));
+        bg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bg.setOpaque(true);
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);

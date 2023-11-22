@@ -25,7 +25,7 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
     String sql = null;
     @Override
     public List<Voucher> getAll() {
-        sql = "Select ma,ten,loaigiamgia,giatrimax, giatrimin, soluong, ngaybatdau, ngayketthuc, trangthai \n" +
+        sql = "Select ma,ten,giatrimax,loaigiamgia, giatrimin, soluong, ngaybatdau, ngayketthuc, trangthai \n" +
 "FROM Voucher order by ma desc";
         List<Voucher> list  = new ArrayList<>();
         try {
@@ -33,7 +33,7 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                com.raven.classmodel.Voucher sv = new com.raven.classmodel.Voucher(rs.getString(1), rs.getString(2),rs.getString(3), rs.getBigDecimal(4),rs.getBigDecimal(5), rs.getInt(6), rs.getDate(7), rs.getDate(8), rs.getInt(9));
+                com.raven.classmodel.Voucher sv = new com.raven.classmodel.Voucher(rs.getString(1), rs.getString(2), rs.getBigDecimal(3),rs.getString(4),rs.getBigDecimal(5), rs.getInt(6), rs.getDate(7), rs.getDate(8), rs.getInt(9));
                 list.add(sv);
             }
             return list;
@@ -43,7 +43,7 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
         }
     }
     public List<Voucher> getAll1(int trangthai) {
-        sql = "select ma,ten,loaigiamgia,giatrimax, giatrimin, soluong, ngaybatdau, ngayketthuc, trangthai from Voucher where trangthai = ? order by ma desc";
+        sql = "select ma,ten,giatrimax,loaigiamgia, giatrimin, soluong, ngaybatdau, ngayketthuc, trangthai from Voucher where trangthai = ? order by ma desc";
         List<Voucher> list  = new ArrayList<>();
         try {
             con= DBConnect.getConnection();
@@ -51,7 +51,7 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
             ps.setObject(1, trangthai);
             rs = ps.executeQuery();
             while(rs.next()){
-                com.raven.classmodel.Voucher sv = new com.raven.classmodel.Voucher(rs.getString(1), rs.getString(2),rs.getString(3), rs.getBigDecimal(4),rs.getBigDecimal(5), rs.getInt(6), rs.getDate(7), rs.getDate(8), rs.getInt(9));
+                com.raven.classmodel.Voucher sv = new com.raven.classmodel.Voucher(rs.getString(1), rs.getString(2), rs.getBigDecimal(3),rs.getString(4),rs.getBigDecimal(5), rs.getInt(6), rs.getDate(7), rs.getDate(8), rs.getInt(9));
                 list.add(sv);
             }
             return list;
@@ -60,9 +60,9 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
             return null;
         }
     }
-    public void loadData1(long trang,int trangthai){
-        sql = "select top 10 ma,ten,loaigiamgia,giatrimax, giatrimin, soluong, ngaybatdau, ngayketthuc, trangthai \n" +
-"FROM Voucher WHERE ma NOT IN (SELECT TOP "+(trang*10-10)+" ma FROM Voucher) and trangthai =? order by ma desc";// WHERE HOTEN NOT IN (SELECT TOP "+(trang*5-5)+" FROM STUDENTS)
+    public List<Voucher> loadData1(long trang,int trangthai){
+        sql = "select top 5 ma,ten,giatrimax,loaigiamgia, giatrimin, soluong, ngaybatdau, ngayketthuc, trangthai \n" +
+"FROM Voucher WHERE ma NOT IN (SELECT TOP "+(trang*5-5)+" ma FROM Voucher) and trangthai =? order by ma desc";// WHERE HOTEN NOT IN (SELECT TOP "+(trang*5-5)+" FROM STUDENTS)
         List<Voucher> list  = new ArrayList<>();
         try {
             con= DBConnect.getConnection();
@@ -71,15 +71,17 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
             rs = ps.executeQuery();
             while(rs.next()){
                 Voucher sv = new Voucher();
-                 sv = new com.raven.classmodel.Voucher(rs.getString(1), rs.getString(2),rs.getString(3), rs.getBigDecimal(4),rs.getBigDecimal(5), rs.getInt(6), rs.getDate(7), rs.getDate(8), rs.getInt(9));
+                  sv = new com.raven.classmodel.Voucher(rs.getString(1), rs.getString(2), rs.getBigDecimal(3),rs.getString(4),rs.getBigDecimal(5), rs.getInt(6), rs.getDate(7), rs.getDate(8), rs.getInt(9));
+                  list.add(sv);
                 }
-            return;
+            return list;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
     }
     public List<Voucher> findcbb(String loaiGiam) {
-        sql = "select ma,ten,loaigiamgia,giatrimax, giatrimin, soluong, ngaybatdau, ngayketthuc, trangthai from Voucher where loaigiamgia=?";
+        sql = "select ma,ten,giatrimax,loaigiamgia, giatrimin, soluong, ngaybatdau, ngayketthuc, trangthai from Voucher where loaigiamgia like ?";
         List<Voucher> list  = new ArrayList<>();
         try {
             con= DBConnect.getConnection();
@@ -87,7 +89,7 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
             ps.setObject(1, loaiGiam);
             rs = ps.executeQuery();
             while(rs.next()){
-                com.raven.classmodel.Voucher sv = new com.raven.classmodel.Voucher(rs.getString(1), rs.getString(2),rs.getString(3), rs.getBigDecimal(4),rs.getBigDecimal(5), rs.getInt(6), rs.getDate(7), rs.getDate(8), rs.getInt(9));
+                com.raven.classmodel.Voucher sv = new com.raven.classmodel.Voucher(rs.getString(1), rs.getString(2), rs.getBigDecimal(3),rs.getString(4),rs.getBigDecimal(5), rs.getInt(6), rs.getDate(7), rs.getDate(8), rs.getInt(9));
                 list.add(sv);
             }
             return list;
@@ -97,18 +99,16 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
         }
     }
     public List<Voucher> loadData(long trang){
-        
-        sql = "select top 10 ma,ten,loaigiamgia,giatrimax, giatrimin, soluong, ngaybatdau, ngayketthuc, trangthai \n" +
-"FROM Voucher WHERE ma NOT IN (SELECT TOP "+(trang*10-10)+" ma FROM Voucher) order by ma desc";// WHERE HOTEN NOT IN (SELECT TOP "+(trang*5-5)+" FROM STUDENTS)
+        sql = "select top 5 ma,ten,giatrimax,loaigiamgia, giatrimin, soluong, ngaybatdau, ngayketthuc, trangthai \n" +
+"FROM Voucher WHERE ma NOT IN (SELECT TOP "+(trang*5-5)+" ma FROM Voucher) order by ma desc";// WHERE HOTEN NOT IN (SELECT TOP "+(trang*5-5)+" FROM STUDENTS)
         List<Voucher> list  = new ArrayList<>();
-        com.raven.form.Voucher vc = new com.raven.form.Voucher();
         try {
             con= DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
                 com.raven.classmodel.Voucher sv = new com.raven.classmodel.Voucher();
-                 sv = new com.raven.classmodel.Voucher(rs.getString(1), rs.getString(2),rs.getString(3), rs.getBigDecimal(4),rs.getBigDecimal(5), rs.getInt(6), rs.getDate(7), rs.getDate(8), rs.getInt(9));
+                  sv = new com.raven.classmodel.Voucher(rs.getString(1), rs.getString(2), rs.getBigDecimal(3),rs.getString(4),rs.getBigDecimal(5), rs.getInt(6), rs.getDate(7), rs.getDate(8), rs.getInt(9));
                 list.add(sv);
             }
             return list;
@@ -136,7 +136,7 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
         }
     }
     public List<Voucher> find(JDateChooser d1, JDateChooser d2) {
-        sql = "select ma,ten,loaigiamgia,giatrimax, giatrimin, soluong, ngaybatdau, ngayketthuc, trangthai from Voucher where ten between  ? and ? ";
+        sql = "select ma,ten,giatrimax,loaigiamgia, giatrimin, soluong, ngaybatdau, ngayketthuc, trangthai from Voucher where ten between  ? and ? ";
         List<Voucher> list  = new ArrayList<>();
         try {
             con= DBConnect.getConnection();
@@ -147,7 +147,7 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
             }
             rs = ps.executeQuery();
             while(rs.next()){
-                com.raven.classmodel.Voucher sv = new com.raven.classmodel.Voucher(rs.getString(1), rs.getString(2),rs.getString(3), rs.getBigDecimal(4),rs.getBigDecimal(5), rs.getInt(6), rs.getDate(7), rs.getDate(8), rs.getInt(9));
+                com.raven.classmodel.Voucher sv = new com.raven.classmodel.Voucher(rs.getString(1), rs.getString(2), rs.getBigDecimal(3),rs.getString(4),rs.getBigDecimal(5), rs.getInt(6), rs.getDate(7), rs.getDate(8), rs.getInt(9));
                 list.add(sv);
             }
             return list;
@@ -159,7 +159,7 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
 
     @Override
     public int insert(Voucher entity) {
-        sql="INSERT INTO Voucher(ma,ten,loaigiamgia,giatrimax, giatrimin, soluong, ngaybatdau, ngayketthuc,trangthai,ngaytao,id_nhanvien,id_hoadon) VALUES\n" +
+        sql="INSERT INTO Voucher(ma,ten,giatrimax,loaigiamgia, giatrimin, soluong, ngaybatdau, ngayketthuc,trangthai,ngaytao,id_nhanvien,id_hoadon) VALUES\n" +
 "(?,?,?,?,?,?,?,?,?,?,?,?)";
         
         try {
@@ -167,8 +167,8 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
             ps = con.prepareStatement(sql);
             ps.setObject(1, entity.getMa());
             ps.setObject(2, entity.getTen());
-            ps.setObject(3, entity.getLoaiGiamGia());
-            ps.setObject(4, entity.getGiatrimax());
+            ps.setObject(3, entity.getGiatrimax());
+            ps.setObject(4, entity.getLoaiGiamGia());
             ps.setObject(5, entity.getGiatrimin());
             ps.setObject(6, entity.getSoLuong());
             ps.setObject(7, entity.getNgayBatDau());
@@ -186,13 +186,13 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
 
     @Override
     public int update(Voucher entity, String id) {
-        sql="UPDATE Voucher SET ten=?,loaigiamgia=?,giatrimax=?,giatrimin=?,soluong=?,ngaybatdau=?,ngayketthuc=?,trangthai =?,ngaytao=? WHERE ma =?";
+        sql="UPDATE Voucher SET ten=?,giatrimax=?,loaigiamgia=?,giatrimin=?,soluong=?,ngaybatdau=?,ngayketthuc=?,trangthai =?,ngaytao=? WHERE ma =?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             ps.setObject(1, entity.getTen());
-            ps.setObject(2, entity.getLoaiGiamGia());
-            ps.setObject(3, entity.getGiatrimax());
+            ps.setObject(2, entity.getGiatrimax());
+            ps.setObject(3, entity.getLoaiGiamGia());
             ps.setObject(4, entity.getGiatrimin());
             ps.setObject(5, entity.getSoLuong());
             ps.setObject(6, entity.getNgayBatDau());
@@ -206,26 +206,25 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
             return 0;
         }
     }
-    public int update1(Voucher entity, Date ngayHienTai) {
-        sql="UPDATE Voucher SET trangthai =? WHERE ngaybatdau=?";
+    public int update1(Voucher entity, String ma) {
+        sql="UPDATE Voucher SET trangthai =? where ma =?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             ps.setObject(1, entity.getTrangThai());
-            ps.setObject(2, ngayHienTai);
+            ps.setObject(1, ma);
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
         }
     }
-    public int update2(Voucher entity, Date ngayHienTai) {
-        sql="UPDATE Voucher SET trangthai =? WHERE ngayketthuc =?";
+    public int update2(Voucher entity, String ma) {
+        sql="UPDATE Voucher SET ngaybatdau =ngaytao, ngayketthuc = ngaytao, trangthai=3 where ma = ?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1, entity.getTrangThai());
-            ps.setObject(2, ngayHienTai);
+            ps.setObject(1, ma);
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -251,14 +250,14 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
     @Override
     public Voucher getID(String id) {
      com.raven.classmodel.Voucher sv = null;
-        sql="select ma,ten,loaigiamgia,giatrimax,giatrimin, soluong, ngaybatdau, ngayketthuc, trangthai from Voucher where ma = ?";
+        sql="select ma,ten,giatrimax,loaigiamgia,giatrimin, soluong, ngaybatdau, ngayketthuc, trangthai from Voucher where ma = ?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             ps.setObject(1, id);
             rs =ps.executeQuery();
             while(rs.next()){
-                 sv = new com.raven.classmodel.Voucher(rs.getString(1), rs.getString(2),rs.getString(3), rs.getBigDecimal(4),rs.getBigDecimal(5), rs.getInt(6), rs.getDate(7), rs.getDate(8), rs.getInt(9));
+                  sv = new com.raven.classmodel.Voucher(rs.getString(1), rs.getString(2), rs.getBigDecimal(3),rs.getString(4),rs.getBigDecimal(5), rs.getInt(6), rs.getDate(7), rs.getDate(8), rs.getInt(9));
                 }
             return sv;
         } catch (Exception e) {
@@ -271,5 +270,5 @@ public class VoucherService implements TheHabitShop<Voucher, String>{
     public List<Voucher> getSql(String sql, Object... args) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+   
 }

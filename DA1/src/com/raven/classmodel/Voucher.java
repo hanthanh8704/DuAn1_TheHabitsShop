@@ -17,8 +17,8 @@ public class Voucher {
     private UUID id;
     private String ma;
     private String ten;
-    private String loaiGiamGia;
     private BigDecimal giatrimax;
+    private String loaiGiamGia;
     private BigDecimal giatrimin;
     private int soLuong;
     private Date ngayBatDau;
@@ -33,12 +33,12 @@ public class Voucher {
     public Voucher() {
     }
 
-    public Voucher(UUID id, String ma, String ten, String loaiGiamGia, BigDecimal giatrimax, BigDecimal giatrimin, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai, String id_nv, String id_hd) {
+    public Voucher(UUID id, String ma, String ten, BigDecimal giatrimax, String loaiGiamGia, BigDecimal giatrimin, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai, String id_nv, String id_hd) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
-        this.loaiGiamGia = loaiGiamGia;
         this.giatrimax = giatrimax;
+        this.loaiGiamGia = loaiGiamGia;
         this.giatrimin = giatrimin;
         this.soLuong = soLuong;
         this.ngayBatDau = ngayBatDau;
@@ -48,7 +48,38 @@ public class Voucher {
         this.id_hd = id_hd;
     }
 
-    public Voucher(String ma, String ten, String loaiGiamGia, BigDecimal giatrimax, BigDecimal giatrimin, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai) {
+    public Voucher(String ma, String ten, BigDecimal giatrimax, String loaiGiamGia, BigDecimal giatrimin, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai) {
+        this.ma = ma;
+        this.ten = ten;
+        this.giatrimax = giatrimax;
+        this.loaiGiamGia = loaiGiamGia;
+        this.giatrimin = giatrimin;
+        this.soLuong = soLuong;
+        this.ngayBatDau = ngayBatDau;
+        this.ngayKetThuc = ngayKetThuc;
+        this.trangThai = trangThai;
+    }
+
+    public Voucher(Date ngayBatDau) {
+        this.ngayBatDau = ngayBatDau;
+    }
+
+    public Voucher(String ma, String ten, BigDecimal giatrimax, String loaiGiamGia, BigDecimal giatrimin, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai, Date ngayTao, NhanVien nv, HoaDon hd) {
+        this.ma = ma;
+        this.ten = ten;
+        this.giatrimax = giatrimax;
+        this.loaiGiamGia = loaiGiamGia;
+        this.giatrimin = giatrimin;
+        this.soLuong = soLuong;
+        this.ngayBatDau = ngayBatDau;
+        this.ngayKetThuc = ngayKetThuc;
+        this.trangThai = trangThai;
+        this.ngayTao = ngayTao;
+        this.nv = nv;
+        this.hd = hd;
+    }
+
+    public Voucher(String ma, String ten, BigDecimal giatrimax, String loaiGiamGia, BigDecimal giatrimin, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai, Date ngayTao, String id_nv, String id_hd) {
         this.ma = ma;
         this.ten = ten;
         this.loaiGiamGia = loaiGiamGia;
@@ -58,9 +89,12 @@ public class Voucher {
         this.ngayBatDau = ngayBatDau;
         this.ngayKetThuc = ngayKetThuc;
         this.trangThai = trangThai;
+        this.ngayTao = ngayTao;
+        this.id_nv = id_nv;
+        this.id_hd = id_hd;
     }
     
-    public Voucher(UUID id, String ma, String ten, String loaiGiamGia, BigDecimal giatrimax, BigDecimal giatrimin, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai, NhanVien nv, HoaDon hd) {
+    public Voucher(UUID id, String ma, String ten, BigDecimal giatrimax, String loaiGiamGia, BigDecimal giatrimin, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai, NhanVien nv, HoaDon hd) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
@@ -75,7 +109,7 @@ public class Voucher {
         this.hd = hd;
     }
 
-    public Voucher(String ma, String ten, String loaiGiamGia, BigDecimal giatrimax, BigDecimal giatrimin, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai, NhanVien nv, HoaDon hd) {
+    public Voucher(String ma, String ten, BigDecimal giatrimax, String loaiGiamGia, BigDecimal giatrimin, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai, NhanVien nv, HoaDon hd) {
         this.ma = ma;
         this.ten = ten;
         this.loaiGiamGia = loaiGiamGia;
@@ -89,7 +123,7 @@ public class Voucher {
         this.hd = hd;
     }
 
-    public Voucher(String ma, String ten, String loaiGiamGia, BigDecimal giatrimax, BigDecimal giatrimin, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai, String id_nv, String id_hd) {
+    public Voucher(String ma, String ten, BigDecimal giatrimax, String loaiGiamGia, BigDecimal giatrimin, int soLuong, Date ngayBatDau, Date ngayKetThuc, int trangThai, String id_nv, String id_hd) {
         this.ma = ma;
         this.ten = ten;
         this.loaiGiamGia = loaiGiamGia;
